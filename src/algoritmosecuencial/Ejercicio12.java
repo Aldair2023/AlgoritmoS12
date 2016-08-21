@@ -5,6 +5,8 @@
  */
 package algoritmosecuencial;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aldair
@@ -45,6 +47,7 @@ public class Ejercicio12 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -79,6 +82,11 @@ public class Ejercicio12 extends javax.swing.JFrame {
         cmdBorrar.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
         cmdBorrar.setText("Borrar");
         cmdBorrar.setToolTipText("");
+        cmdBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBorrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 120, 50));
 
         txtPagar.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +95,19 @@ public class Ejercicio12 extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 230, 40));
+
+        txtDia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDiaKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 70, 30));
+
+        txtPeliculas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPeliculasKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtPeliculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 80, 40));
 
         cmdCalcular.setBackground(new java.awt.Color(255, 255, 153));
@@ -126,6 +146,15 @@ public class Ejercicio12 extends javax.swing.JFrame {
         
         double pagar, peliculas, dia, res1, res2, res3;
         
+        if(txtPeliculas.getText().trim().isEmpty() && txtDia.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null,"por favor LLENE los campos vacios","ERROR",JOptionPane.WARNING_MESSAGE);
+        }else if(txtPeliculas.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null,"por favor ingrese la cantidad de peliculas que alquilo");
+        }else if(txtDia.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "por favor ingrese el numero de dias de alquiler");
+        }else 
+        
+        try{    
         peliculas=Double.parseDouble(txtPeliculas.getText());
         dia=Double.parseDouble(txtDia.getText());
         
@@ -139,16 +168,46 @@ public class Ejercicio12 extends javax.swing.JFrame {
         txtPagar.setText(""+res3);
         
         txtPeliculas.requestFocusInWindow();
-        
-        
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "hay algunos campos que tienen errores, por favor corregirlos","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
         
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         System.exit(0);
-        
+     
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
+        txtPeliculas.setText("");
+        txtDia.setText("");
+        txtPagar.setText("");
+        
+        txtPeliculas.requestFocusInWindow();
+    }//GEN-LAST:event_cmdBorrarActionPerformed
+
+    private void txtPeliculasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPeliculasKeyTyped
+        char c=evt.getKeyChar();
+        
+        if(!Character.isDigit(evt.getKeyChar())&& evt.getKeyChar() != '.'){
+            getToolkit();
+            
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPeliculasKeyTyped
+
+    private void txtDiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiaKeyTyped
+        char c=evt.getKeyChar();
+        
+        if(!Character.isDigit(evt.getKeyChar())&& evt.getKeyChar() != '.'){
+            getToolkit();
+            
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDiaKeyTyped
 
     /**
      * @param args the command line arguments
