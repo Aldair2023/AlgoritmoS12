@@ -16,6 +16,10 @@ public class Ejercicio12 extends javax.swing.JFrame {
      */
     public Ejercicio12() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        txtPeliculas.requestFocusInWindow();
+        
+        
     }
 
     /**
@@ -33,11 +37,11 @@ public class Ejercicio12 extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        cmdBorrar = new javax.swing.JButton();
+        txtPagar = new javax.swing.JTextField();
+        txtDia = new javax.swing.JTextField();
+        txtPeliculas = new javax.swing.JTextField();
+        cmdCalcular = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,6 +51,11 @@ public class Ejercicio12 extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 0, 0));
         jButton1.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         jButton1.setText("SALIR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, 80, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
@@ -62,23 +71,34 @@ public class Ejercicio12 extends javax.swing.JFrame {
         jLabel4.setText("Procesador De Datos");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
-        jLabel5.setText("jLabel2");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, 40));
+        jLabel5.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        jLabel5.setText("Total Pagar Por El Alquiler");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, -1, 40));
 
-        jButton2.setText("jButton2");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, -1, -1));
+        cmdBorrar.setBackground(new java.awt.Color(255, 255, 153));
+        cmdBorrar.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
+        cmdBorrar.setText("Borrar");
+        cmdBorrar.setToolTipText("");
+        jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 120, 50));
 
-        jButton3.setText("jButton2");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, -1, -1));
+        txtPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPagarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 230, 40));
+        jPanel1.add(txtDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 70, 30));
+        jPanel1.add(txtPeliculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 80, 40));
 
-        jTextField1.setText("jTextField1");
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, -1, -1));
-
-        jTextField2.setText("jTextField1");
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 140, 50));
-
-        jTextField3.setText("jTextField1");
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 90, 50));
+        cmdCalcular.setBackground(new java.awt.Color(255, 255, 153));
+        cmdCalcular.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
+        cmdCalcular.setText("Calcular");
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 120, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\aldair\\Desktop\\istock_000019699924small.jpg")); // NOI18N
         jLabel1.setText("jLabel1");
@@ -97,6 +117,38 @@ public class Ejercicio12 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPagarActionPerformed
+        
+    }//GEN-LAST:event_txtPagarActionPerformed
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+        
+        double pagar, peliculas, dia, res1, res2, res3;
+        
+        peliculas=Double.parseDouble(txtPeliculas.getText());
+        dia=Double.parseDouble(txtDia.getText());
+        
+        res1=peliculas;
+        res2=dia;
+        
+        res3=(((dia*1500)*peliculas)-1500*dia);
+        
+        txtPeliculas.setText(""+res1);
+        txtDia.setText(""+res2);
+        txtPagar.setText(""+res3);
+        
+        txtPeliculas.requestFocusInWindow();
+        
+        
+        
+    }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        System.exit(0);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,17 +186,17 @@ public class Ejercicio12 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdBorrar;
+    private javax.swing.JButton cmdCalcular;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField txtDia;
+    private javax.swing.JTextField txtPagar;
+    private javax.swing.JTextField txtPeliculas;
     // End of variables declaration//GEN-END:variables
 }
