@@ -89,6 +89,7 @@ public class Ejercicio12 extends javax.swing.JFrame {
         });
         jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 120, 50));
 
+        txtPagar.setEditable(false);
         txtPagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPagarActionPerformed(evt);
@@ -144,7 +145,7 @@ public class Ejercicio12 extends javax.swing.JFrame {
 
     private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
         
-        double pagar, peliculas, dia, res1, res2, res3;
+        double peliculas, dia, res1, res2, res3;
         
         if(txtPeliculas.getText().trim().isEmpty() && txtDia.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(null,"por favor LLENE los campos vacios","ERROR",JOptionPane.WARNING_MESSAGE);
@@ -190,8 +191,6 @@ public class Ejercicio12 extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdBorrarActionPerformed
 
     private void txtPeliculasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPeliculasKeyTyped
-        char c=evt.getKeyChar();
-        
         if(!Character.isDigit(evt.getKeyChar())&& evt.getKeyChar() != '.'){
             getToolkit();
             
@@ -200,8 +199,6 @@ public class Ejercicio12 extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPeliculasKeyTyped
 
     private void txtDiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiaKeyTyped
-        char c=evt.getKeyChar();
-        
         if(!Character.isDigit(evt.getKeyChar())&& evt.getKeyChar() != '.'){
             getToolkit();
             
