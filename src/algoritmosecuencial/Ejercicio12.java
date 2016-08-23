@@ -121,7 +121,7 @@ public class Ejercicio12 extends javax.swing.JFrame {
         });
         jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 120, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\aldair\\Desktop\\istock_000019699924small.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagendefondo/istock_000019699924small.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 390));
 
@@ -155,6 +155,8 @@ public class Ejercicio12 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "por favor ingrese el numero de dias de alquiler");
         }else 
         
+            
+            
         try{    
         peliculas=Double.parseDouble(txtPeliculas.getText());
         dia=Double.parseDouble(txtDia.getText());
@@ -169,6 +171,15 @@ public class Ejercicio12 extends javax.swing.JFrame {
         txtPagar.setText(""+res3);
         
         txtPeliculas.requestFocusInWindow();
+        
+        if(peliculas == 0){
+            JOptionPane.showMessageDialog(null, "digite numeros diferentes de cero en la casilla de peliculas ","ERROR",JOptionPane.INFORMATION_MESSAGE);
+            txtPeliculas.requestFocusInWindow();
+            txtPeliculas.setText("");
+            txtDia.setText("");
+            txtPagar.setText("");
+            
+        }
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "hay algunos campos que tienen errores, por favor corregirlos","ERROR",JOptionPane.ERROR_MESSAGE);
